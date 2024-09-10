@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #f39c12;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #444;
+    padding: 10px;
+    top: 100%;
+    left: 0;
+    min-width: 150px;
+    z-index: 1;
+}
+
+.dropdown-menu li {
+    margin-bottom: 5px;
+}
+
+.dropdown-menu li a {
+    color: white;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown on hover */
+}
+
+.dropdown-item {
+    position: relative;
+}
+
+.dropdown-item a::after {
+    content: " ▼"; /* Add a down arrow after items with dropdowns */
+}
+
+.dropdown-item:hover .dropdown-menu {
+    display: block; /* Show dropdown when the parent is hovered */
+}
+
+</style>
+<body>
+
+    <!-- Quick Links Dropdown in Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="dropdown">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li class="dropdown-item">
+                            <a href="#">Courses</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Math</a></li>
+                                <li><a href="#">Science</a></li>
+                                <li><a href="#">History</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+    
+<script>
+    document.querySelectorAll('.dropdown-item > a').forEach(item => {
+        item.addEventListener('click', function(e) {
+            const dropdownMenu = this.nextElementSibling;
+
+            if (dropdownMenu.style.display === 'block') {
+                dropdownMenu.style.display = 'none';
+            } else {
+                dropdownMenu.style.display = 'block';
+            }
+
+            e.preventDefault(); // Prevent link from navigating
+        });
+    });
+</script>
+
+</html>
